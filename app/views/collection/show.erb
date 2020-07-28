@@ -1,0 +1,11 @@
+
+Brand: <%= @collection.brand %> <br>
+Style: <%= @collection.style %> <br>
+Color: <%= @collection.color %> <br>
+Size: <%= @collection.size %>" <br>
+Price: $<%= @collection.price %> <br>
+
+<form method="post" action="/collections/<%= @collection.id %>">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="delete">
+</form>
