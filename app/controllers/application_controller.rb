@@ -13,6 +13,9 @@ class ApplicationController < Sinatra::Base
     erb :'/users/signup'
   end
 
-
-
+  helpers do 
+    def current_user
+        User.find_by_id(session[:user_id])
+      end
+    end
 end

@@ -7,6 +7,7 @@ end
 
 use Rack::MethodOverride
 
+
 use CollectionController
 use UserController
 run ApplicationController

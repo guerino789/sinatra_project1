@@ -14,7 +14,7 @@ class UserController < ApplicationController
                 email: params[:email], 
                 password: params[:password])
 
-            session[:user_id] = @user_id
+            session[:user_id] = @user.id
             redirect "/users/#{@user.id}"
         end
     end
@@ -27,7 +27,7 @@ class UserController < ApplicationController
         @user = User.find_by(username: params[:username])
 
         if @user && @user.authenticate(params[:password])
-            session[:user_id] = @user_id
+            session[:user_id] = @user.id
             redirect "/users/#{@user.id}"
         else
             redirect "/users/login"
@@ -38,6 +38,12 @@ class UserController < ApplicationController
         @user = User.find(params[:id])
         erb :'/users/show'
     end
+
+    get '/logout' do
+        session.clear
+        redirect '/users/login'
+      end
+      
 
 
   

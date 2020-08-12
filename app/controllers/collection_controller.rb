@@ -5,7 +5,10 @@ class CollectionController < ApplicationController
     end
 
     post '/collections' do 
+    
         @collection = Collection.create(
+         
+            user_id: current_user.id,
             brand: params[:brand], 
             style: params[:style], 
             color: params[:color], 
@@ -22,8 +25,9 @@ class CollectionController < ApplicationController
     end
 
     get '/collections' do 
-        @collections = Collection.all 
-       erb :'/collection/index'
+       
+        @collections = current_user.collections
+         erb :'/collection/index' 
     end 
 
     get '/collections/:id/edit' do
@@ -31,7 +35,7 @@ class CollectionController < ApplicationController
         erb :'/collection/edit'
     end
 
-    post '/collections/:id' do
+    patch '/collections/:id' do
         @collection = Collection.find(params[:id])
         @collection.update(
             brand: params[:brand], 

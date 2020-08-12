@@ -9,3 +9,12 @@ Price: $<%= @collection.price %> <br>
   <input id="hidden" type="hidden" name="_method" value="DELETE">
   <input type="submit" value="delete">
 </form>
+
+<form method="get" action="/collections/<%= @collection.id %>/edit">
+  <input type="submit" value="edit">
+</form>
+
+<nav>
+    <a href="/collections"> Current knife collection </a>
+
+</nav>

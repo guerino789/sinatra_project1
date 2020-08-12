@@ -1,13 +1,21 @@
 <% @collections.each do |collection| %>
 
-    Collection number: <%= collection.id %> <br>
+    <a href="/collections/<%= collection.id %> "> view knife </a>
+
+     Collection number: <%= collection.id %> <br>
     Brand: <%= collection.brand %> <br>
     Style: <%= collection.style %> <br>
     Color: <%= collection.color %> <br>
     Size: <%= collection.size %>"  <br>
     Price: $<%= collection.price %><br>
+
 <% end %>
 
 <nav>
-    <a href="/collections/:id/edit"> Edit knife collection </a>
-</nav>
+    <a href="/collections/new"> Add knife to collection! </a>
+
+    
+
+ 
+
+<
