@@ -20,7 +20,11 @@ class CollectionController < ApplicationController
     end
 
     get '/collections/:id' do 
-        @collection = Collection.find(params[:id])
+        @collection = Collection.find_by_id(params[:id])
+         if @collection.user_id != current_user.id
+                redirect '/collections'
+            end
+            
         erb :'/collection/show'
     end
 
@@ -31,12 +35,13 @@ class CollectionController < ApplicationController
     end 
 
     get '/collections/:id/edit' do
-        @collection = Collection.find(params[:id])
+        @collection = Collection.find_by_id(params[:id])
+
         erb :'/collection/edit'
     end
 
     patch '/collections/:id' do
-        @collection = Collection.find(params[:id])
+        @collection = Collection.find_by_id(params[:id])
         @collection.update(
             brand: params[:brand], 
             style: params[:style], 
@@ -48,7 +53,7 @@ class CollectionController < ApplicationController
     end
 
     delete '/collections/:id' do 
-        @collection = Collection.find(params[:id])
+        @collection = Collection.find_by_id(params[:id])
         @collection.destroy 
         redirect '/collections'        
     end
